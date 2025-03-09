@@ -6,39 +6,22 @@
         role="form"
         aria-label="Formulário para criação de um novo treino"
       >
-        <!-- Nome do treino -->
-        <input
-          type="text"
-          v-model="treinoNome"
-          class="input"
-          placeholder="Qual exercício você deseja iniciar?"
+        <!-- Categoria de treino -->
+        <CampoInputSelect
+          :isInput="false"
+          :selectModel="categoriaSelecionada"
+          :options="categorias"
+          @update:modelValue="categoriaSelecionada = $event"
         />
 
-        <!-- Categoria de treino -->
-        <div class="select is-fullwidth">
-          <select v-model="categoriaSelecionada">
-            <option
-              v-for="categoria in categorias"
-              :key="categoria"
-              :value="categoria"
-            >
-              {{ categoria }}
-            </option>
-          </select>
-        </div>
-
         <!-- Treino selecionado -->
-        <div class="select is-fullwidth mt-2">
-          <select v-model="treinoEscolhido">
-            <option
-              v-for="treino in treinos[categoriaSelecionada]"
-              :key="treino"
-              :value="treino"
-            >
-              {{ treino }}
-            </option>
-          </select>
-        </div>
+        <CampoInputSelect
+          :isInput="false"
+          :selectModel="treinoEscolhido"
+          :options="treinos[categoriaSelecionada]"
+          @update:modelValue="treinoEscolhido = $event"
+        />
+
         <!-- Cronômetro -->
         <CronometroAtividade
           :tempo="tempo"
@@ -54,6 +37,7 @@
 </template>
 
 <script>
+import CampoInputSelect from "@/components/CampoInputSelect.vue";
 import CronometroAtividade from "@/components/CronometroAtividade.vue";
 import TreinosConcluidos from "@/components/TreinosConcluidos.vue";
 import dadosTreino from "@/assets/dadosTreino.json";
@@ -61,6 +45,7 @@ import dadosTreino from "@/assets/dadosTreino.json";
 export default {
   name: "FormularioTarefa",
   components: {
+    CampoInputSelect,
     CronometroAtividade,
     TreinosConcluidos,
   },
