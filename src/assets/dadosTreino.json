@@ -1,0 +1,8 @@
+{
+  "categorias": ["Musculação", "Cardio", "Flexibilidade/Mobilidade"],
+  "treinos": {
+    "Musculação": ["Supino", "Agachamento", "Levantamento Terra"],
+    "Cardio": ["Corrida", "Ciclismo", "Natação"],
+    "Flexibilidade/Mobilidade": ["Yoga", "Alongamento"]
+  }
+}
